@@ -1,0 +1,17 @@
+{
+  "name": "excel-uploader",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "alan g. alves"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
