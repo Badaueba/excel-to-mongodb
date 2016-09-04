@@ -17,6 +17,13 @@ var port = process.env.PORT || 8000;
 app.use(express.static ( __dirname + "/public"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+
+app.use( (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization, X-Access-Token, Origin, Accept');
+    next();
+});
 app.get("/", function (req, res) {
     res.send( path.join( __dirname + "/public/index.html"));
 });
@@ -89,8 +96,12 @@ function removeFile (path) {
         else console.log('Arquivo deletado');
     });
 }
-app.post("/hello", function (req, res){
-    res.send("hello");
+
+app.get("/files", function (req, res){
+    Contatos.find( (err, result) => {
+        if (err) return res.send(err);
+        res.send(result);
+    })
 });
 
 app.listen(port, function (){

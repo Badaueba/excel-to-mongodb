@@ -1,14 +1,27 @@
-var filesCtrl = angular.module('filesCtrl', ['ngFileUpload', 'file-model']);
+var filesCtrl = angular.module('filesCtrl', ['ngFileUpload',
+'angularUtils.directives.dirPagination','file-model', 'fileService']);
 
 filesCtrl.controller('filesController', filesController);
 
-function filesController (Upload) {
+function filesController (Upload, Request) {
     var ctrl = this;
     ctrl.msg = '';
     ctrl.sheets =[];
     ctrl.endPoint = '';
     ctrl.data = [];
-    
+
+    ctrl.getData = function () {
+        Request.get('/files')
+            .then(function (res){
+                console.log(res.data);
+                ctrl.data = res.data;
+            })
+            .catch(function (err){
+                ctrl.msg = err;
+            });
+    };
+
+    ctrl.getData();
 
     ctrl.upload = function (files) {
         console.log('upload')

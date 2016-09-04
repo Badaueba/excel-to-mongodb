@@ -1,4 +1,4 @@
-var excelUploader = angular.module('excel-uploader', ['ui.router','filesCtrl']);
+var excelUploader = angular.module('excel-uploader', ['ui.router','filesCtrl', 'fileService']);
 
 excelUploader.config(function ($stateProvider, $urlRouterProvider){
     $stateProvider

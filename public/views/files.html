@@ -43,7 +43,9 @@
         </tbody>
 
     </table>
-
+    <style media="screen">
+        th { text-align: center; color: #AA0245}
+    </style>
     <dir-pagination-controls
         max-size="10"
         direction-links="true"
@@ -78,24 +80,24 @@
 
                 <div class="modal-body">
 
-                    <p>informações de analfabetos</p>
+                    <p>informações do contato</p>
                     <form ng-submit="files.getData">
                         <div class="form-group">
-                            <label for="">Região</label>
+                            <label for="">Nome</label>
                             <input class="form-control" ng-model="files.modalObject.nome" placeholder="{{files.modalObject.nome}}" type="text" name="" />
                         </div>
                         <div class="form-group">
-                            <label for="">Total de analfabetos</label>
+                            <label for="">Email</label>
                             <input class="form-control" ng-model="files.modalObject.e_email" placeholder="{{files.modalObject.e_email}}" type="text" />
                         </div>
 
                         <div class="form-group">
-                            <label for="">Afrodescendentes</label>
+                            <label for="">Categoria</label>
                             <input class="form-control" ng-model="files.modalObject.categoria" placeholder="{{files.modalObject.categoria}}" type="text" />
                         </div>
 
                         <div class="form-group">
-                            <label for="">Ano</label>
+                            <label for="">Telefone</label>
                             <input class="form-control" ng-model="files.modalObject.telefone" placeholder="{{files.modalObject.telefone}}" type="text" />
                         </div>
 
