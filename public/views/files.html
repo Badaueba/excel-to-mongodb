@@ -1,0 +1,130 @@
+<div class="jumbotron text-center">
+    <h3>Upload/Download</h3>
+    <h4>{{files.msg}}</h4>
+
+    <div class="input-group" style="margin:auto;">
+
+      <input  id="uploadField" value=""
+        type="file" file-model="files.sheets" multiple/>
+    </div>
+
+
+    <button class="btn btn-success" ng-click="files.upload(files.sheets)">
+        Upload
+    </button>
+</div>
+
+<div class="jumbotron text-center">
+    <h2>Listagem</h2>
+    <table class="table table-hover table-striped" id="modalListagem" ng-show="files.data">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr dir-paginate="object in files.data | itemsPerPage:10"
+                ng-click="files.openModal(object, 'edit')"
+                data-toggle="modal"
+                data-target="#myModal"
+                data-toggle="tooltip"
+                data-content="{{object.nome}}"
+                title="Edite {{object.nome | uppercase}}"
+                class="cursor tootip">
+
+                <td>{{object.nome}}</td>
+                <td>{{object.e_mail}}</td>
+                <td>{{object.categoria}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <dir-pagination-controls
+        max-size="10"
+        direction-links="true"
+        boundary-links="true" >
+    </dir-pagination-controls>
+
+    <!-- Criar novo contato -->
+    <div >
+        <input type="button" value="Inserir" class="btn btn-default"
+        data-toggle="modal" data-target="#myModal" data-toggle="tooltip"
+        title="Inserir novo contato" ng-click="files.openModal({},'create')"/>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="myModal" role="dialog" >
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal"
+                        ng-click="files.clearMessages()">
+                        &times;
+                    </button>
+
+                    <h4 ng-if="files.mode == 'edit'" class="modal-title">Edição/Exclusão</h4>
+                    <h4 ng-if="files.mode == 'create'" class="modal-title">Criar</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <p>informações de analfabetos</p>
+                    <form ng-submit="files.getData">
+                        <div class="form-group">
+                            <label for="">Região</label>
+                            <input class="form-control" ng-model="files.modalObject.nome" placeholder="{{files.modalObject.nome}}" type="text" name="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Total de analfabetos</label>
+                            <input class="form-control" ng-model="files.modalObject.e_email" placeholder="{{files.modalObject.e_email}}" type="text" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Afrodescendentes</label>
+                            <input class="form-control" ng-model="files.modalObject.categoria" placeholder="{{files.modalObject.categoria}}" type="text" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Ano</label>
+                            <input class="form-control" ng-model="files.modalObject.telefone" placeholder="{{files.modalObject.telefone}}" type="text" />
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <div ng-if="files.mode == 'edit' ">
+                        <input value="Salvar Alterações" type="submit" class="btn btn-success" ng-click="files.updateInfo(files.modalObject)" />
+                        <input value="Deletar" type="submit" class="btn btn-danger" ng-click="files.deleteInfo(files.modalObject)" />
+                    </div>
+
+                    <div ng-if="files.mode == 'create' ">
+                        <input value="Criar nova região" type="submit"
+                            class="btn btn-success" ng-click="files.createInfo(files.modalObject)"/>
+                    </div>
+
+                </div>
+
+                <p ng-if="files.updateProcessing">Carregando...</p>
+                <p ng-if="!files.updateProcessing">{{files.updateMessage}}</p>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+</div>
