@@ -24,26 +24,24 @@ app.use( (req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization, X-Access-Token, Origin, Accept');
     next();
 });
-app.get("/", function (req, res) {
+app.get("*", function (req, res) {
     res.send( path.join( __dirname + "/public/index.html"));
 });
 
 var mimetypeXls = "application/vnd.ms-excel";
 var mimetypeXlsx = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-var mimetypeOds = "application/vnd.oasis.opendocument.spreadsheet";
 
 app.post("/files", upload.single('file'), function (req, res){
 
     var path;
     if (req.file) path = req.file.path;
     else return res.send({success : false, message : 'no files was uploaded'});
-    if (req.file.mimetype !== mimetypeXls && req.file.mimetype !== mimetypeXlsx &&
-        req.file.mimetype !== mimetypeOds) {
+    if (req.file.mimetype !== mimetypeXls && req.file.mimetype !== mimetypeXlsx) {
 
         removeFile(path);
         return res.send({
            success : false,
-           message : 'O arquivo enviado (' + req.file.originalname + ') não é uma planilha .xslx'
+           message : 'O arquivo enviado (' + req.file.originalname + ') não é uma planilha .xslx válida'
        });
     }
 
@@ -64,11 +62,9 @@ function parseXls (req, res) {
             for (var c = 0; c < infoMatriz[0].length; c ++) {
                 newObject[infoMatriz[0][c]] = infoMatriz[l][c];
             }
-            console.log('\n')
-            console.log('\n')
+            console.log('')
             console.log(newObject)
-            console.log('\n')
-            console.log('\n')
+            console.log('')
             objects.push(newObject);
         }
 
