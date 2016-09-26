@@ -27,18 +27,18 @@
 
         <tbody>
 
-            <tr dir-paginate="object in files.data | itemsPerPage:10"
+            <tr dir-paginate="file in files.data | itemsPerPage:10"
                 ng-click="files.openModal(object, 'edit')"
                 data-toggle="modal"
                 data-target="#myModal"
                 data-toggle="tooltip"
-                data-content="{{object.nome}}"
-                title="Edite {{object.nome | uppercase}}"
+                data-content="{{file.nome}}"
+                title="Edite {{file.nome | uppercase}}"
                 class="cursor tootip">
 
-                <td>{{object.nome}}</td>
-                <td>{{object.e_mail}}</td>
-                <td>{{object.categoria}}</td>
+                <td>{{file.nome}}</td>
+                <td>{{file.e_mail}}</td>
+                <td>{{file.categoria}}</td>
             </tr>
         </tbody>
 

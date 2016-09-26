@@ -24,7 +24,7 @@ app.use( (req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization, X-Access-Token, Origin, Accept');
     next();
 });
-app.get("*", function (req, res) {
+app.get("/", function (req, res) {
     res.send( path.join( __dirname + "/public/index.html"));
 });
 
