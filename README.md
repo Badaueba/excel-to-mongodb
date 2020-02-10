@@ -1,13 +1,13 @@
 # excel-to-mongodb
 Uploading/Saving xls, xlsx excel sheets with mean application
 
-##usage 
+## usage 
 
-  $npm install 
+  $ npm install 
   
-  $bower install 
+  $ bower install 
   
 
-##adding xlsx / xls files
+## adding xlsx / xls files
 
-![web] (http://i.imgur.com/FVNgJaw.png)
+![web](http://i.imgur.com/FVNgJaw.png)
