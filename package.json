@@ -4,16 +4,21 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "alan g. alves",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bower": "^1.8.8",
     "express": "^4.14.0",
-    "mongoose": "^4.6.0",
+    "mongoose": "^5.8.7",
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
     "node-xlsx": "^0.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

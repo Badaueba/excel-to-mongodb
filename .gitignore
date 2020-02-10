@@ -4,3 +4,4 @@ public/libs/
 .c9/
 .idea/
 data/
+nodemon.json
