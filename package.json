@@ -12,7 +12,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "bower": "^1.8.8",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "mongoose": "^5.8.7",
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
